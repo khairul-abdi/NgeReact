@@ -20,10 +20,11 @@
       const age = 17
       const color = 'red'
 
-      function Heading() {
+      function Heading(props) {
         return (
           <h2 style={{ color, backgroundColor: 'blue' }}>
-            Hello React {name.toUpperCase()} umur saya adalah {age + 1}
+            Hello React {props.name.toUpperCase()} umur saya adalah{' '}
+            {props.age + 1}
           </h2>
         )
       }
@@ -31,9 +32,13 @@
       function App() {
         return (
           <div className='container'>
-            <Heading />
-            <Heading />
-            <Heading />
+            <Heading
+              name='Khairul'
+              age={age}
+              user={{ name: 'Khairul', age: { age } }}
+            />
+            <Heading name='Diah' age={16} />
+            <Heading name='Siapa' age={14} />
             <label htmlFor='name'>Name</label>
             <input type='text' id='name' />
           </div>
