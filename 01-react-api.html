@@ -20,17 +20,26 @@
       const age = 17
       const color = 'red'
 
-      const element = (
-        <div className='container'>
+      function Heading() {
+        return (
           <h2 style={{ color, backgroundColor: 'blue' }}>
             Hello React {name.toUpperCase()} umur saya adalah {age + 1}
           </h2>
-          <label htmlFor='name'>Name</label>
-          <input type='text' id='name' />
-        </div>
-      )
-      console.log(element)
-      ReactDOM.render(element, document.getElementById('app'))
+        )
+      }
+
+      function App() {
+        return (
+          <div className='container'>
+            <Heading />
+            <Heading />
+            <Heading />
+            <label htmlFor='name'>Name</label>
+            <input type='text' id='name' />
+          </div>
+        )
+      }
+      ReactDOM.render(<App />, document.getElementById('app'))
     </script>
   </body>
 </html>
