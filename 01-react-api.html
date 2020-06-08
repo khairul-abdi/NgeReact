@@ -9,7 +9,7 @@
     <div id="app"></div>
     <script src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
 
     <script type="text/babel">
       // const h2 = React.createElement('h1', {}, 'Hello React')
@@ -29,6 +29,15 @@
         )
       }
 
+      function Input() {
+        return (
+          <>
+            <label htmlFor='name'>Name</label>
+            <input type='text' id='name' />
+          </>
+        )
+      }
+
       function App() {
         return (
           <div className='container'>
@@ -39,8 +48,7 @@
             />
             <Heading name='Diah' age={16} />
             <Heading name='Siapa' age={14} />
-            <label htmlFor='name'>Name</label>
-            <input type='text' id='name' />
+            <Input />
           </div>
         )
       }
