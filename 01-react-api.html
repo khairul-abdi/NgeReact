@@ -16,11 +16,9 @@
       // const element = React.createElement('div', { id: 'hello' }, h2)
       // ReactDOM.render(element, document.getElementById('app'))
 
-      const name = 'Khairul'
-      const age = 17
-      const color = 'red'
-
       function Heading(props) {
+        const name = 'Khairul'
+        const color = 'red'
         return (
           <h2 style={{ color, backgroundColor: 'blue' }}>
             Hello React {props.name.toUpperCase()} umur saya adalah{' '}
@@ -29,28 +27,26 @@
         )
       }
 
-      function onChange(event) {
-        console.log(event.target.value)
-      }
-
       function Input() {
+        function onChange(event) {
+          console.log(event.target.value)
+        }
+
         return (
           <>
             <label htmlFor='name'>Name</label>
-            <input
-              type='text'
-              id='name'
-              onChange={(event) => console.log(event.target.value)}
-            />
+            <input type='text' id='name' onChange={onChange} />
           </>
         )
       }
 
-      function onClick(event) {
-        // console.log(event)
-      }
-
       function App() {
+        const age = 17
+
+        function onClick() {
+          console.log('div terpencet')
+        }
+
         return (
           <div className='container' onClick={onClick}>
             <Heading
