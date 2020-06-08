@@ -31,7 +31,29 @@
         const [name, setName] = React.useState('Khairul')
         const [age, setAge] = React.useState(17)
         const [data] = React.useState(database)
-        const [loading, setLoading] = React.useState(false)
+        const [loading, setLoading] = React.useState(true)
+
+        React.useEffect(() => {
+          console.log(
+            'Fungsi ini dijalankan setiap kali react melakukan render component'
+          )
+
+          document.title = name
+
+          return function () {
+            console.log('cleanup function dijalankan')
+          }
+        }, [name])
+
+        React.useEffect(() => {
+          const id = setTimeout(() => {
+            setLoading(false)
+          }, 100)
+
+          return function () {
+            clearTimeout(id)
+          }
+        }, [])
 
         function onChangeName(event) {
           const value = event.target.value
@@ -42,9 +64,8 @@
 
         function onChangeAge(event) {
           const value = event.target.value
-          console.log(value)
 
-          setAge(value)
+          setAge(Number(value))
         }
 
         return (
@@ -56,7 +77,7 @@
             <input type='text' onChange={onChangeName} id='name' />
             <br />
             <label htmlFor='age'>Age</label>
-            <input type='text' onChange={onChangeAge} id='age' />
+            <input type='number' onChange={onChangeAge} id='age' />
             <br />
 
             {loading ? (
@@ -68,8 +89,11 @@
                 ))}
               </ul>
             )}
+            <br />
 
             {age >= 17 && <span>Anda memiliki KTP</span>}
+            <br />
+            <button onClick={(e) => setAge(age + 1)}>Tambah Umur</button>
           </div>
         )
       }
